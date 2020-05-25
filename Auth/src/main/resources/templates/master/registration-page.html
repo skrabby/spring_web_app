@@ -36,7 +36,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="row">
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
           <div class="card card-login">
-            <form class="form" th:action="@{/login}" method="post">
+            <form class="form" th:action="@{/registration}" method="post">
               <div class="card-header card-header-primary text-center">
                 <h4 class="card-title">Login</h4>
                 <div class="social-line">
@@ -52,11 +52,6 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
               <div class="card-body">
-                <div th:if="${param.error}">
-                  <p class="description text-danger text-center">Invalid email or password.</p>
-                </div>
-                <div th:if="${param.logout}">
-                  <p class="description text-gray text-center">You have been logged out.</p>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -64,7 +59,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <i class="material-icons">mail</i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" name="username" placeholder="Email...">
+                  <input type="text" class="form-control" name="username" placeholder="Email..." required>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -72,14 +67,28 @@ The above copyright notice and this permission notice shall be included in all c
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" name="password" placeholder="Password...">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password..." required onkeyup='check();'/>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password..." required onkeyup='check();'/>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">vpn_key</i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control" name="key" placeholder="Key..." required>
                 </div>
               </div>
               <div class="footer text-center">
-                <input class="btn btn-primary" type="submit" value="Sign In"/>
-                <a class="description text-gray text-center" href="/registration">Register</a>
+                <input class="btn btn-primary" type="submit" value="Sign Up"/>
               </div>
-              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
           </div>
         </div>

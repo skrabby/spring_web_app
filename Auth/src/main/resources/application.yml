@@ -1,6 +1,18 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+
 app:
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5432/auth_db
     username: postgres
     password: postgres
     pool-size: 30
+

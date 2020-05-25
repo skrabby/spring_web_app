@@ -1,12 +1,11 @@
 package Auth.api;
 
-import Auth.dao.UserDao;
 import Auth.model.User;
 import Auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/api/users")
 @RestController
@@ -18,13 +17,5 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("insert")
-    public void insertUser(@RequestBody User user) {
-        userService.insertUser(user);
-    }
 
-    @GetMapping("get")
-    public List<User> getAllUsers(){
-        return userService.getAllPeople();
-    }
 }

@@ -1,17 +1,10 @@
 package Auth.dao;
 
 import Auth.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.UUID;
-
-public interface UserDao {
-    int insertUser(UUID id, User user);
-
-    default int insertUser(User user) {
-        UUID id = UUID.randomUUID();
-        return insertUser(id, user);
-    }
-
-    List<User> selectAllUsers();
+@Repository("users")
+public interface UserDao extends JpaRepository<User, Long> {
+    User findByUsername(String username);
 }
