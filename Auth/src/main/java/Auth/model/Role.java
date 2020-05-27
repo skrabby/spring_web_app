@@ -1,16 +1,19 @@
 package Auth.model;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class Role {
+public class Role implements GrantedAuthority {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
     private String name;
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
     private Collection<User> users;
 
     public Long getId() { return id; }
@@ -25,4 +28,8 @@ public class Role {
         this.name = name;
     }
 
+    @Override
+    public String getAuthority() {
+        return name;
+    }
 }

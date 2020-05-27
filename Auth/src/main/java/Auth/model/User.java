@@ -1,6 +1,7 @@
 package Auth.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
@@ -12,18 +13,58 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    @Column(name = "lastname")
+    private String lastName;
+    @Column(name = "firstname")
+    private String firstName;
+    @Column(name = "middlename")
+    private String middleName;
+    @Column(name = "photourl")
+    private String photoUrl;
     @Column(name = "active")
     private boolean active;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_Role")
-    /*@JoinTable(
-            name = "users_roles",
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(
+            name = "users_role",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))*/
-    private Role role;
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     public Long getId() {
         return id;
@@ -33,12 +74,12 @@ public class User {
         this.id = id;
     }
 
-    public Role getRole() {
-        return role;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     public String getUsername() {
