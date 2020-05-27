@@ -1,16 +1,22 @@
 # spring_web_app
 Maven Spring Boot Web App
 
-TEST ACCOUNTS:
+# TEST ACCOUNTS
 
 ADMIN PRIVILEGES:
-admin1
-admin
+
+log: admin1
+
+pass: admin
 
 TEACHER PRIVILEGES:
-teacher1
-tacher
+
+log: teacher1
+
+pass: teacher
 
 STUDENT PRIVELEGES:
-user1
-user
+
+log: user1
+
+pass: user
