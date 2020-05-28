@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +20,6 @@ import java.util.Map;
 public class IndexController {
     @Autowired
     private UserService userService;
-
-    private Map<Long, User> userMap = new HashMap<>();
 
     @GetMapping("/")
     public String mainPage() {
@@ -66,58 +65,31 @@ public class IndexController {
     }
     */
     @GetMapping("/admin/dashboard")
-    public String adminDashboardPage(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
-        if (result.hasErrors())
-            return "error";
-        model.addAttribute("firstName", user.getFirstName());
-        model.addAttribute("lastName", user.getLastName());
-        userMap.put(user.getId(), user);
-        return "dashboard/dashboard";
+    public ModelAndView adminDashboardPage() {
+        ModelAndView modelAndView = new ModelAndView("admin-dashboard/dashboard");;
+        User user = userService.getUser();
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
     @GetMapping("/teacher/dashboard")
-    public String teacherDashboardPage() {
-        return "dashboard/dashboard";
+        public ModelAndView teacherDashboardPage() {
+            ModelAndView modelAndView = new ModelAndView("teacher-dashboard/dashboard");;
+            User user = userService.getUser();
+            modelAndView.addObject("user", user);
+            return modelAndView;
     }
 
     @GetMapping("/student/dashboard")
-    public String studentDashboardPage() {
-        return "dashboard/dashboard";
-    }
-
-
-    @GetMapping("/user")
-    public String userPage() {
-        return "dashboard/user";
-    }
-
-    @GetMapping("/tables")
-    public String tablesPage() {
-        return "dashboard/tables";
-    }
-
-    @GetMapping("/typography")
-    public String typographyPage() {
-        return "dashboard/typography";
+    public ModelAndView studentDashboardPage() {
+        ModelAndView modelAndView = new ModelAndView("student-dashboard/dashboard");;
+        User user = userService.getUser();
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
     @GetMapping("/icons")
     public String iconsPage() {
-        return "dashboard/icons";
-    }
-
-    @GetMapping("/map")
-    public String mapPage() {
-        return "dashboard/map";
-    }
-
-    @GetMapping("/maps")
-    public String mapsPage() {
-        return "dashboard/maps";
-    }
-
-    @GetMapping("/notifications")
-    public String notificationsPage() {
-        return "dashboard/notifications";
+        return "admin-dashboard/icons";
     }
 }

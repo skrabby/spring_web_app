@@ -10,7 +10,7 @@ Coded by Creative Tim
 =========================================================
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8" />
@@ -36,51 +36,21 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-        ${firstName} ${lastName}
-        </a></div>
+      <div class="logo"><span class="simple-text logo-normal">
+        <span th:text="${user.getFirstName()} + ' '"></span><span th:text="${user.getLastName()}"></span>
+      </span></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="/admin/dashboard">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/user">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/tables">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/typography">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="/icons">
               <i class="material-icons">bubble_chart</i>
               <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/map">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/notifications">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
             </a>
           </li>
           <li class="nav-item ">

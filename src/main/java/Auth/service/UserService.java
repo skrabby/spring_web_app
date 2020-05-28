@@ -4,17 +4,12 @@ import Auth.dao.RoleDao;
 import Auth.dao.UserDao;
 import Auth.model.Role;
 import Auth.model.User;
-import Auth.model.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,12 +18,14 @@ import java.util.*;
 public class UserService {
     private final UserDao userDao;
     private final RoleDao roleDao;
+
     @Autowired
     public UserService(@Qualifier("users") UserDao userDao, @Qualifier("users_roles") RoleDao roleDao) {
         this.userDao = userDao;
         this.roleDao = roleDao;
     }
 
+    /*
     public String insertUser(User user, Map<String, Object> model) {
         User userFromDb = userDao.findByUsername(user.getUsername());
         if (userFromDb != null) {
@@ -41,6 +38,7 @@ public class UserService {
         userDao.save(user);
         return "redirect:/login";
     }
+    */
 
     public User getUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
