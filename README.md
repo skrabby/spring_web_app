@@ -1,13 +1,11 @@
-# spring_web_app
-Maven Spring Boot Web App
-
 # Test Accounts
 
 Tests on Lucentium
 
 SuperAdmin Priveleges (Adding School to db):
-superadmin1
-superadmin
+
+login: superadmin1
+password: superadmin
 
 => creates admin user
 Admin user can create either Teacher or Student users
