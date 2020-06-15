@@ -1,7 +1,7 @@
 ### ER Diagram
 
 Current ER Diagram. Will be modified in the development process
-<center><img src="https://i.imgur.com/Kd4BssU.png" width="900" title="Heat Map Example"></center>
+<center><img src="https://i.imgur.com/Kd4BssU.png" width="900" title="ER Diagram"></center>
 
 ### Test Accounts
 
