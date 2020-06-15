@@ -1,4 +1,9 @@
-# Test Accounts
+### ER Diagram
+
+Current ER Diagram. Will be modified in the development process
+<center><img src="https://i.imgur.com/OUSNW9c.png" width="900" title="Heat Map Example"></center>
+
+### Test Accounts
 
 Tests on Lucentium
 
